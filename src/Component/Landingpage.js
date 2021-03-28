@@ -5,7 +5,7 @@ import './../Stylesheets/Landingpage.scss'
 
 function Landingpage() {
 	return (
-		<div className="main">
+		<div className="landingpage_main">
 			<img className='bg' src={background} alt="img"/>
 		</div>
 	);
