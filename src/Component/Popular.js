@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from 'react';
+
+//import de react router
 import { Link } from 'react-router-dom';
+
+//import du service dans le fichier TMDB_services.js
 import { getPopular } from './../Service/TMDB_services';
+
 import './../Stylesheets/Upcoming.scss';
 
 function Popular() {
 	const [titre, settitre] = useState([]);
 
 	useEffect(async () => {
+		//permet de reécuperer les information des film populaire
+		//de TMDB et de les stocker dans un variable au chargement de cette page
 		let items = await getPopular(1);
 		let rslt = items.results;
 		settitre(rslt);
@@ -16,6 +23,7 @@ function Popular() {
 		<div className="upcoming__main main">
 			<h1>Popular</h1>
 			<div className="carte_container">
+				{/* affichage des film trouver grace a la methode map */}
 				{titre.map((item) => (
 					<Link className="carte" key={item.id} to={`/Popular/${item.id}`}>
 						<img

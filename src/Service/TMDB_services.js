@@ -2,6 +2,7 @@ const ApiKey = '3a74798a8674fd5cf79df9dffa47e3e2';
 const PathApi = 'https://api.themoviedb.org/3/';
 const langue = 'FR-fr';
 
+//methode permettant de récupérer les iformations du webservice TMDB
 export const getPopular = async (page) => {
 	return await fetch(
 		PathApi +
@@ -26,7 +27,7 @@ export const searchMovie = async (recherche) => {
 
 export const searchMovieById = async (id) => {
 	return await fetch(
-		PathApi+'movie/'+id+'?api_key='+ApiKey+'&language=en-US'
+		PathApi + 'movie/' + id + '?api_key=' + ApiKey + '&language=en-US'
 	)
 		.then((response) => response.json())
 		.catch((error) => console.error(error));

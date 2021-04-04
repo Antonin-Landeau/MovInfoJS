@@ -2,16 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { searchMovieById } from './../Service/TMDB_services';
 import './../App.scss';
 import './../Stylesheets/Filmdetails.scss';
-
+/**
+ * affiche les détails d'un film
+ * @param {match} object envoyer par le Link du router avec les parametre (ID du film)
+ * @returns Le detail des films avec le titre, une photo, les genres, les producteurs,
+ * La date de sortie, le budget, et un plot
+ *
+ */
 function Filmdetails({ match }) {
+	//state permettant de mettre a jour les donné des films
 	const [item, setitem] = useState({});
 
 	useEffect(async () => {
+		//fait les recherches de film par id et met a jour
+		//le state des films lorsque les itmes changes
 		let details = await searchMovieById(match.params.id);
 		setitem(details);
 	}, [item]);
 
-	// budget,overview,release_date,production_companies,genres
 	console.log(item);
 	return (
 		<div className="filmdetail_main main">
@@ -24,7 +32,7 @@ function Filmdetails({ match }) {
 						alt="img"
 					/>
 				) : (
-					<div className="Background"></div>
+					<div className="Background">Aucune</div>
 				)}
 				<div className="genre">
 					<ul>
